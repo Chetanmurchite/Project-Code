@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="">
+</head>
+<style>
+    table{
+    box-shadow: -1px 12px 12px -6px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+table, td, th{
+  background: transparent;
+	border: 1px solid lightgray;
+	border-collapse: collapse;
+	text-align: center;
+	cursor: pointer;
+  color: white;
+}
+
+th{
+	background-color:rgba(0,0,0,0.5);
+	color: white;
+}
+
+tr:nth-child(odd){
+	background-color: lightblue;
+}
+
+tr:nth-child(odd):hover{
+    background-color:rgba(0,0,0,0.5);
+	color: white;
+	transform: scale(1.1);
+	transition: transform 300ms ease-in;
+}
+
+tr:nth-child(even){
+	background-color:rgba(0,0,0,0.5);
+}
+
+tr:nth-child(even):hover{
+	background-color:rgba(0,0,0,0.5);
+	transform: scale(1.1);
+	transition: transform 300ms ease-in;
+}
+
+.float-div2{
+  float: right;
+}
+.float-div1{
+  float: left;
+}
+</style>
+
+<body>
+  <h2> Airline List</h2>
+  <form>
+    <input type="button" value="Go back!" onclick="history.back()">
+   </form>
+  <div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="input-group mb-3">
+              <div class="input-group-append" style="margin-left: 150px;">
+              <li class="nav-item dropdown" style=" list-style-type: none;"></li>
+              <!-- Add another input field for location -->
+              <input *ngIf="selectedSearchType === 'airlineName'; else destinationDeparture" type="text" class="form-control" 
+              [(ngModel)]="airlineName" placeholder="Search by airlineName " 
+              class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" 
+              style="background-color: white; color: black; border:3px solid gainsboro;" />
+
+            <ng-template  #destinationDeparture>
+                <input  type="text" class="form-control" [(ngModel)]="destination" placeholder="Destination" 
+                class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" 
+                style="background-color: white; color: black; border:3px solid gainsboro;" />
+
+                <input  type="text" class="form-control" [(ngModel)]="departure" placeholder="Departure" 
+                class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" 
+                style="background-color: white; color: black; border:3px solid gainsboro;" />
+
+              </ng-template> 
+              
+              <ul class="dropdown-menu">
+                <li><a id="01" class="dropdown-item" (click)="selectedSearchType = 'airlineName'"><b>Airline Name </b></a></li>
+                <li><a id="02" class="dropdown-item" (click)="selectedSearchType = 'destinationDeparture'"><b>Destination and Departure </b></a></li>
+              </ul>
+              
+              
+                <button class="btn btn-outline-secondary" type="button" (click)="search(selectedSearchType)" style="color: azure;">
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+     </div>
+    </div>
+    </div>
+
+   <button class="btn btn-outline-secondary" type="button" (click)="getisinternational()" style="margin-right:60px;color:#EEE2DC;
+   background:#503bac;font-size:17px;font-weight: 600;">International Flight</button>
+
+     <button class="btn btn-outline-secondary" type="button" (click)="getisdomastic()"
+         style="margin-right:60px;color:#f8fef9;background: hwb(271 4% 7%);font-size:17px;font-weight: 600;">Domestic Flight</button>
+
+   <!-- <div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by airline name"
+          [(ngModel)]="airlineName" />
+        
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary"type="button"(click)="searchByAirlineName()" 
+          style="color:#f8fef9;background: hwb(270 1% 88%);font-size:17px;font-weight: 600;">Search</button>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="float-div2">
+     <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split"
+      style="padding: 5px;margin-left:25px;border-radius: 5px;color:#EEE2DC;background: #632c50; width: 1;" data-bs-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Sort By</button>
+     <div class="dropdown-menu" style="background-color:rgba(255,255,255,0.5);">
+       <li><a (click)="sortBy('costHigh')" class="dropdown-item"><b>Cost High to Low</b></a></li>
+       <li><a (click)="sortBy('costLow')" class="dropdown-item"><b>Cost Low to High</b></a></li>
+       <li><a (click)="sortBy('ratingLow')" class="dropdown-item"><b>Rating Low to High</b></a></li>
+       <li><a (click)="sortBy('ratingHigh')" class="dropdown-item"><b>Rating High to Low</b></a></li>
+     </div>
+   </div>
+
+
+<!-- <div style="float: right;">
+  <li type="none" class="nav-item dropdown">
+    <h4 class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black;">
+      <b style="color: azure;">Sort By</b>
+    </h4>
+    <ul class="dropdown-menu">
+      <li><a (click)="sortBy('costHigh')" class="dropdown-item"><b>Cost High to Low</b></a></li>
+      <li><a (click)="sortBy('costLow')" class="dropdown-item"><b>Cost Low to High</b></a></li>
+      <li><a (click)="sortBy('ratingLow')" class="dropdown-item"><b>Rating Low to High</b></a></li>
+      <li><a (click)="sortBy('ratingHigh')" class="dropdown-item"><b>Rating High to Low</b></a></li>
+    </ul>
+   </li> -->
+
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> Destination</th>
+            <th> Departure </th>
+            <th> Cost</th>
+            <th>Rating</th>
+            <th> AirlineName </th>
+            <th> International Flight </th>
+            <th> Action </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let airline of airline | paginate: { itemsPerPage: count, currentPage: pageNo }" >
+            <td> {{ airline.destination }} </td>
+            <td> {{ airline.departure }} </td>
+            <td> {{ airline.cost }} </td>
+            <td>{{ airline.rating }}</td>
+            <td> {{ airline.airlineName }} </td>
+            <td> {{ airline.isinternational }} </td>
+            <!-- <td>{{ airline.isdomastic }}</td>  -->
+                      <td>
+                <button (click) = "updateAirline(airline.flightid)" class = "btn btn-info"> Update</button>
+                <button (click) = "deleteAirline(airline.flightid)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                <button (click) = "airlineDetails(airline.flightid)" class = "btn btn-info" style="margin-left: 10px"> View</button>
+            </td>
+        </tr>
+        <tr *ngIf="airline !== null">
+            <button class="m-3 btn btn-sm btn-danger" (click)="removeAllAirlines()">
+                Remove All
+              </button>
+        </tr>
+        
+    </tbody>
+</table>
+<div style="background-color: rgba(0, 0, 0, 0.5); color: rgb(182, 79, 24);">
+<div> <pagination-controls (pageChange)="pageNo = $event"></pagination-controls> </div>
+</div>
+
+<footer>
+  <!-- Footer -->
+<footer class="text-center text-lg-start bg-white text-muted">
+<!-- Section: Social media -->
+<section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+<!-- Left -->
+<div class="me-5 d-none d-lg-block">
+<span>Get connected with us on social networks:</span>
+</div>
+<!-- Left -->
+
+<!-- Right -->
+<div>
+<a href="" class="me-4 link-secondary">
+<i class="fab fa-facebook-f"></i>
+</a>
+<a href="" class="me-4 link-secondary">
+<i class="fab fa-twitter"></i>
+</a>
+<a href="" class="me-4 link-secondary">
+<i class="fab fa-google"></i>
+</a>
+<a href="" class="me-4 link-secondary">
+<i class="fab fa-instagram"></i>
+</a>
+<a href="" class="me-4 link-secondary">
+<i class="fab fa-linkedin"></i>
+</a>
+<a href="" class="me-4 link-secondary">
+<i class="fab fa-github"></i>
+</a>
+</div>
+<!-- Right -->
+</section>
+<!-- Section: Social media -->
+
+<!-- Section: Links  -->
+<section class="">
+<div class="container text-center text-md-start mt-5">
+<div class="row mt-3">
+<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+  <h6 class="text-uppercase fw-bold mb-4">
+    <i class="fas fa-gem me-3 text-secondary"></i>Our Product
+  </h6>
+  <p>
+      Domastic Flights <br>
+      International Flights
+  
+  </p>
+</div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Company Patnars
+            </h6>
+            <p>
+              <a href="http://indigo.in/" class="text-reset">IndiGo</a>
+            </p>
+            <p>
+              <a href="https://www.airindia.in/" class="text-reset">Air India</a>
+            </p>
+            <p>
+              <a href="https://www.spicejet.com/" class="text-reset">SpiceJet</a>
+            </p>
+            <p>
+              <a href="https://www.jetairways.com/" class="text-reset">Jet Airways</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Useful links
+            </h6>
+            <p>
+              <a href="https://www.goibibo.com/offers/" class="text-reset">Offers</a>
+            </p>
+            <p>
+              <a href="https://www.goibibo.com/flights/city-to-city-airlines/" class="text-reset">Airline Routes</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Orders</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Help</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+  <!-- Links -->
+  <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+  <p><i class="fas fa-home me-3 text-secondary"></i> New York, NY 10012, US</p>
+  <p>
+    <i class="fas fa-envelope me-3 text-secondary"></i>
+    info@example.com
+  </p>
+  <p><i class="fas fa-phone me-3 text-secondary"></i> + 01 234 567 88</p>
+  <p><i class="fas fa-print me-3 text-secondary"></i> + 01 234 567 89</p>
+</div>
+<!-- Grid column -->
+</div>
+<!-- Grid row -->
+</div>
+</section>
+<!-- Section: Links  -->
+
+<!-- Copyright -->
+<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+© 2021 Copyright:
+<a class="text-reset fw-bold" href="http://localhost:4200/">airline.com</a>
+</div>
+<!-- Copyright -->
+</footer>
+<!-- Footer -->
+</footer>

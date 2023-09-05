@@ -1,0 +1,49 @@
+
+<div class="col-md-6 offset-md-3">
+    <h3> Update Airline </h3>
+    <form (ngSubmit) = "onSubmit()">
+    
+        <div class="form-group">
+            <label> Destination</label>
+            <input type="text" class ="form-control" id = "destination"
+                [(ngModel)] = "airline.destination" name = "Destination">
+        </div>
+    
+        <div class="form-group">
+            <label> Departure</label>
+            <input type="text" class ="form-control" id = "departure"
+                [(ngModel)] = "airline.departure" name = "departure">
+        </div>
+    
+        <div class="form-group">
+            <label> Cost</label>
+            <input type="number" class ="form-control" id = "cost"
+                [(ngModel)] ="airline.cost" name = "cost">
+        </div>
+
+        <div class="form-group">
+            <label> Rating</label>
+            <input type="number" class ="form-control" id = "rating"
+                [(ngModel)] ="airline.rating" name = "rating">
+        </div>
+
+        <div class="form-group">
+            <label>AirlineName</label>
+            <input type="text" class ="form-control" id = "airlineName"
+                [(ngModel)] = "airline.airlineName" name = "airlineName">
+        </div>
+        <div class="form-group">
+            <input type="radio" id="isinternational" name="fav_language" >
+            <!-- [(ngModel)] = "airline.isinternational" name = "isinternational"> -->
+            <label for="isinternational">isinternational</label><br>
+        </div>
+    
+        <div class="form-group">
+            <input type="radio" id="isdomastic" name="fav_language"> 
+            <!-- [(ngModel)] = "airline.isdomastic" name = "isdomastic"> -->
+            <label for="isdomastic">isdomastic</label><br>
+        </div>
+        <button class = "btn btn-success" type ="submit">Submit</button>
+    
+    </form>
+    </div> 

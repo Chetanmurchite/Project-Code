@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("demo");
+          let captionText = document.getElementById("caption");
+          if (n > slides.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";
+          dots[slideIndex-1].className += " active";
+          captionText.innerHTML = dots[slideIndex-1].alt;
+        }
+        </script>
+    
+        
+           
+    </head>
+
+    <body>
+        <P>
+            An airline is a company that provides air transport services for traveling passengers and/or freight. Airlines use aircraft to supply these services and may form partnerships or alliances with other airlines for codeshare agreements, in which they both offer and operate the same flight. Generally, airline companies are recognized with an air operating certificate or license issued by a governmental aviation body. Airlines may be scheduled or charter operators.
+        </P> 
+        <p>
+ Many countries have national airlines that the government owns and operates. Fully private airlines are subject to much government regulation for economic, political, and safety concerns. For instance, governments often intervene to halt airline labor actions to protect the free flow of people, communications, and goods between different regions without compromising safety.
+The United States, Australia, and to a lesser extent Brazil, Mexico, India, the United Kingdom, and Japan have "deregulated" their airlines. In the past, these governments dictated airfares, route networks, and other operational requirements for each airline. Since deregulation, airlines have been largely free to negotiate their own operating arrangements with different airports, enter and exit routes easily, and to levy airfares and supply flights according to market demand. The entry barriers for new airlines are lower in a deregulated market, and so the U.S. has seen hundreds of airlines start up (sometimes for only a brief operating period). This has produced far greater competition than before deregulation in most markets. The added competition, together with pricing freedom, means that new entrants often take market share with highly reduced rates that, to a limited degree, full service airlines must match. This is a major constraint on profitability for established carriers, which tend to have a higher cost base.
+As a result, profitability in a deregulated market is uneven for most airlines. These forces have caused some major airlines to go out of business, in addition to most of the poorly established new entrants.
+        </p>
+<hr>
+    
+
+       <h2 style="text-align:center">Gallery</h2>
+
+<div class="container">
+  <div class="mySlides">
+    <div class="numbertext">1 / 6</div>
+    <img src="assets\s1.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">2 / 6</div>
+    <img src="assets\s2.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">3 / 6</div>
+    <img src="assets\s3.jpg" style="width:100%">
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">4 / 6</div>
+    <img src="assets\s4.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">5 / 6</div>
+    <img src="assets\s5.jpg" style="width:100%">
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">6 / 6</div>
+    <img src="assets\s6.jpg" style="width:100%">
+  </div>
+    
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="assets\s1.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="assets\s2.jpg" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="assets\s3.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="assets\s4.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="assets\s5.jpg" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
+    </div>    
+    <div class="column">
+      <img class="demo cursor" src="assets\s6.jpg" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
+    </div>
+  </div>
+</div>
+
+
+        <img src="\assets\2.jpg" alt="Cinque Terre" width="1300" height="500">
+        <br>
+
+
+        <footer>
+            <!-- Footer -->
+<footer class="text-center text-lg-start bg-white text-muted">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <!-- Left -->
+      <div class="me-5 d-none d-lg-block">
+        <span>Get connected with us on social networks:</span>
+      </div>
+      <!-- Left -->
+  
+      <!-- Right -->
+      <div>
+        <a href="" class="me-4 link-secondary">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="" class="me-4 link-secondary">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="" class="me-4 link-secondary">
+          <i class="fab fa-google"></i>
+        </a>
+        <a href="" class="me-4 link-secondary">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="" class="me-4 link-secondary">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="me-4 link-secondary">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+  
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <div class="row mt-3">
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+    
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-gem me-3 text-secondary"></i>Our Products
+            </h6>
+            <p>
+              Domastic Flights <br>
+              International Flights
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Company Patnars
+            </h6>
+            <p>
+              <a href="http://indigo.in/" class="text-reset">IndiGo</a>
+            </p>
+            <p>
+              <a href="https://www.airindia.in/" class="text-reset">Air India</a>
+            </p>
+            <p>
+              <a href="https://www.spicejet.com/" class="text-reset">SpiceJet</a>
+            </p>
+            <p>
+              <a href="https://www.jetairways.com/" class="text-reset">Jet Airways</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Useful links
+            </h6>
+            <p>
+              <a href="https://www.goibibo.com/offers/" class="text-reset">Offers</a>
+            </p>
+            <p>
+              <a href="https://www.goibibo.com/flights/city-to-city-airlines/" class="text-reset">Airline Routes</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Orders</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Help</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i class="fas fa-home me-3 text-secondary"></i> New York, NY 10012, US</p>
+            <p>
+              <i class="fas fa-envelope me-3 text-secondary"></i>
+              info@example.com
+            </p>
+            <p><i class="fas fa-phone me-3 text-secondary"></i> + 01 234 567 88</p>
+            <p><i class="fas fa-print me-3 text-secondary"></i> + 01 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+      © 2021 Copyright:
+      <a class="text-reset fw-bold" href="http://localhost:4200/">airline.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+        </footer>
+   </body>
+</html>
+
